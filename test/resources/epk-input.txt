@@ -1,0 +1,8 @@
+{"opa_id": 1234, "balance": 1000, "riskProfile" : "High"}
+{"opa_id": 1562, "balance": 2000, "riskProfile" : "Low"}
+{"opa_id":  919, "balance":  400, "riskProfile" : "High"}
+{"opa_id": 9022, "balance": 8000, "riskProfile" : "High"}
+could not fetch the opa info
+{"opa_id": 90,   "balance": 8000, "riskProfile" : "High"}
+could not fetch the opa info
+

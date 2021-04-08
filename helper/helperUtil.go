@@ -1,15 +1,22 @@
 package helper
 
 import (
+	"encoding/json"
 	"fmt"
+	log "github.com/sirupsen/logrus"
 	"io"
-	"time"
 	"os"
 	"path/filepath"
-	log "github.com/sirupsen/logrus"
+	"time"
 )
 
-func InitiateLogger(name string) {
+func InitiateAndCreateLogfile(name string) {
+	log.SetFormatter(&log.TextFormatter{
+		DisableColors:   true,
+		TimestampFormat: "2006-01-02 15:04:05",
+		FullTimestamp:   true,
+	})
+
 	cwd, err := os.Getwd()
 	fmt.Print(cwd)
 
@@ -31,12 +38,15 @@ func InitiateLogger(name string) {
 		}
 		logFile.Close()
 	}
-
 	log.RegisterExitHandler(exitHandler)
-
 }
 
 func ExitLogger() {
 	// perform actions
 	log.Exit(0)
+}
+
+func CheckValidJson(text string) bool {
+	var js map[string]interface{}
+	return json.Unmarshal([]byte(text), &js) == nil
 }

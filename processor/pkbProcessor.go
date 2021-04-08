@@ -3,25 +3,31 @@ package processor
 import (
 	"bufio"
 	"fmt"
-	"net/http"
-	"nordea/npl/norway/pkrPublisher/v2/helper"
+	"strconv"
+
+	//"net/http"
 	log "github.com/sirupsen/logrus"
+	"nordea/npl/norway/pkrPublisher/v2/helper"
 	"os"
 )
 
-func ProcessEPK(){
-	helper.InitiateLogger("epk");
-	log.Info("processing the opa file ");
-	file, err := os.Open("epk-input.txt")
-	if(err!= nil){
-		log.Error("error opening the file")
-		fmt.Println("error opening the file")
+func ProcessEPK() {
+	helper.InitiateAndCreateLogfile("epk")
+	log.Info("processing the opa file")
+	inputFile, err := os.Open("test/resources/epk-input.txt")
+	if err != nil {
+		log.Error("error opening the input file")
+		fmt.Println("error opening the input file")
 	}
-	scanner := bufio.NewScanner(file)
-	scanner.Split(bufio.ScanLines)
+	inputFileSanner := bufio.NewScanner(inputFile)
+	inputFileSanner.Split(bufio.ScanLines)
 
-	for scanner.Scan(){
-		http.Patch()
+	for inputFileSanner.Scan() {
+		//fmt.Println("input file:"+ inputFileSanner.Text() +" valid json: " + strconv.FormatBool(helper.CheckValidJson(inputFileSanner.Text())))
+		log.Info("input file:" + inputFileSanner.Text() + " valid json: " + strconv.FormatBool(helper.CheckValidJson(inputFileSanner.Text())))
+		//http.Patch()
 	}
+
+	inputFile.Close()
 	helper.ExitLogger()
 }
