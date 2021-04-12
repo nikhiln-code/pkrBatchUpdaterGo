@@ -1,7 +1,16 @@
 ## PKR Weekly Publisher
 
+
+
 This is a simple program to help publish the weekly PKR data to hub
 
+
+## Status
+
+
+
+![Github license](https://img.shields.io/badge/license-MIT-blue.svg)
+![Go Lang](https://img.shields.io/badge/Go-v1.14-blue)
 
 ## Details
 

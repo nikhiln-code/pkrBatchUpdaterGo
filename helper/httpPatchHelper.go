@@ -3,9 +3,9 @@ package helper
 import (
 	"bytes"
 	"encoding/json"
+	log "github.com/sirupsen/logrus"
 	"io/ioutil"
 	"net/http"
-	log "github.com/sirupsen/logrus"
 )
 
 const url = "https://localhsot:8080/put"
